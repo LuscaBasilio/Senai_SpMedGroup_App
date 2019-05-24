@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, AsyncStorage, TextInput, TouchableOpacity} from 'react-native';
-import api from './src/services/api';
+import {api} from './src/services/api';
 
 export default class App extends Component {
 
@@ -11,21 +11,34 @@ export default class App extends Component {
 
   _Login = async() =>{
 
-  const response = await api.post('/Login/log', {
-    email: this.state.email,
-    senha: this.state.senha
-  })
+    fetch("http://192.168.56.1:5000/api/Login/log",{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify({
+            email: this.state.email,
+            senha: this.state.senha
+              }
+            )
+    })
+// // console.warn(this.state)
+//   api('Login/log').Login(JSON.stringify({
+//     email: this.state.email,
+//     senha: this.state.senha
+//       }
+//     )
+//   )
+//   .then(resposta => console.warn(resposta))
+//   .catch(error => console.warn(error))
 
-  token = response.data.token;
-  await AsyncStorage.setItem('userToken', token);
-  this.props.navigation.navigate('');
 }
 
   render() {
     return (
       <View style={styles.container}>
 
-        <Image source={require('./src/assets/img/LogoSp.png')} style={{width: 150, height: 150, marginLeft:"27%"}}/>
+        <Image source={require('./src/assets/img/logosp.png')} style={{width: 150, height: 150, marginLeft:"27%"}}/>
 
         <TextInput style={styles.inputs} 
         placeholderTextColor="#82D98F"
@@ -38,7 +51,7 @@ export default class App extends Component {
         password='true'
         onChangeText={senha => this.setState({senha})} />
 
-        <TouchableOpacity style={styles.button} onPress={this._Login()}>
+        <TouchableOpacity style={styles.button} onPress={this._Login}>
           <Text style={styles.buttonLogin}>Login</Text>
         </TouchableOpacity>
         

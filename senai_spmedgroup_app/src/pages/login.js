@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, AsyncStorage, TextInput, TouchableOpacity} from 'react-native';
-import api from './src/services/api';
+import api from '../services/api';
 
-export default class App extends Component {
+export default class Login extends Component {
 
   constructor(props){
     super(props);
@@ -11,7 +11,7 @@ export default class App extends Component {
 
   _Login = async() =>{
 
-  const response = await api.post('/Login/log', {
+  const response = await api.post('Login/log', {
     email: this.state.email,
     senha: this.state.senha
   })
@@ -25,7 +25,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-        <Image source={require('./src/assets/img/LogoSp.png')} style={{width: 150, height: 150, marginLeft:"27%"}}/>
+        <Image source={require('../assets/img/logosp.png')} style={{width: 150, height: 150, marginLeft:"27%"}}/>
 
         <TextInput style={styles.inputs} 
         placeholderTextColor="#82D98F"

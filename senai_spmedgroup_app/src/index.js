@@ -1,14 +1,15 @@
-import {
-    createAppContainer,
-    createStackNavigator,
-    createSwitchNavigator
-        } from 'react-native';
+// import {
+//  createAppContainer,
+//  createStackNavigator,
+//  createSwitchNavigator
+// } from 'react-native';
 
-import Login from './pages/login';
+// import Listagem from './pages/listagem';
+// import Login from './pages/login';
 
-const AuthStack = createStackNavigator(
-    {Login,
-    Listagem},
+// export default AuthStack = createStackNavigator(
+//     {Login,
+//     Listagem},
     
-    {initialRoute: "Login"}
-)
+//     {initialRoute: "Login"}
+// )

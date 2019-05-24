@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image, AsyncStorage} from 'react-native';
-import api from './src/services/api';
+import api from '../services/api';
 import jwt from 'jwt-decode';
 
 
